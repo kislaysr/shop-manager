@@ -1,0 +1,17 @@
+{
+  "name": "shop-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js --name glove"
+  },
+  "author": "kislay",
+  "license": "ISC",
+  "dependencies": {
+    "@shopify/shopify-api": "^7.5.0"
+  },
+  "devDependencies": {
+    "jest": "^29.6.1"
+  }
+}
