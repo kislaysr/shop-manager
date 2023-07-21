@@ -1,10 +1,11 @@
 require('@shopify/shopify-api/adapters/node');
 const shopify = require('@shopify/shopify-api');
+require('dotenv').config();
 
 async function createShopifyClient() {
-  const shopDomain = "green-check-1183.myshopify.com";
-  const apiSecretKey = "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";
-  const storefrontAccessToken = "700c88fcf8f4e9329316e9c154258266";
+  const shopDomain = process.env.SHOP_DOMAIN;
+  const apiSecretKey = process.env.API_SECRET_KEY;
+  const storefrontAccessToken = process.env.STOREFRONT_ACCESS_TOKEN;
 
   const shopifyClient = new shopify.shopifyApi({
     apiKey: storefrontAccessToken,
@@ -86,7 +87,6 @@ async function readArgsAndFetch() {
     const name = args[nameArgIndex + 1];
     const client = await createShopifyClient();
     const products = await fetchProductsByKeyword(name, client);
-    console.log(JSON.stringify(products));
     displayProducts(products);
   } else {
     console.error('Invalid input. Please provide a product name using --name flag.');
